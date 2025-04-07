@@ -16,6 +16,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class Shop {
     public static void main(String[] args) {
         SpringApplication.run(Shop.class, args);
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 }

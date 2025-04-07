@@ -3,9 +3,9 @@ package implementation;
 import entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import service.BaseService;
-
 
 import java.util.List;
 import java.util.Optional;
@@ -22,11 +22,13 @@ public class UserImplementation implements BaseService<User> {
     }
 
     @Override
+    @Transactional
     public void create(User entity) {
         entityManager.persist(entity);
     }
 
     @Override
+    @Transactional
     public void update(User entity) {
         entityManager.merge(entity);
     }
@@ -37,6 +39,7 @@ public class UserImplementation implements BaseService<User> {
     }
 
     @Override
+    @Transactional
     public boolean deleteById(Long id) {
         Optional<User> optionalUser = readById(id);
         if(optionalUser.isPresent()){

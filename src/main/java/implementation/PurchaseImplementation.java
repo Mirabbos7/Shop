@@ -39,6 +39,7 @@ public class PurchaseImplementation implements BaseService<Purchase> {
     }
 
     @Override
+    @Transactional
     public boolean deleteById(Long id) {
         Optional<Purchase> optionalPurchase = readById(id);
         if (optionalPurchase.isPresent()) {

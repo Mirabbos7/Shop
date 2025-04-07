@@ -24,7 +24,7 @@ public class User {
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Purchase> purchaseList;
 
     public User(Long id, String name, LocalDateTime createdAt, LocalDateTime updatedAt, List<Purchase> purchaseList) {
@@ -82,12 +82,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(createdAt, user.createdAt) && Objects.equals(updatedAt, user.updatedAt) && Objects.equals(purchaseList, user.purchaseList);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(createdAt, user.createdAt) && Objects.equals(updatedAt, user.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, createdAt, updatedAt, purchaseList);
+        return Objects.hash(id, name, createdAt, updatedAt);
     }
 
     @Override
@@ -97,7 +97,6 @@ public class User {
                 ", name='" + name + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
-                ", purchaseList=" + purchaseList +
                 '}';
     }
 }
