@@ -3,6 +3,7 @@ package implementation;
 import entities.Purchase;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import service.BaseService;
 
@@ -21,11 +22,13 @@ public class PurchaseImplementation implements BaseService<Purchase> {
     }
 
     @Override
+    @Transactional
     public void create(Purchase entity) {
         entityManager.persist(entity);
     }
 
     @Override
+    @Transactional
     public void update(Purchase entity) {
         entityManager.merge(entity);
     }

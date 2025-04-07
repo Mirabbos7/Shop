@@ -27,13 +27,13 @@ public class Purchase {
     @JoinColumn(name = "user_id")
     User user;
 
-
-    public Purchase(Long id, String name, LocalDateTime purchaseDate, int totalAmount, String paymentMethod) {
+    public Purchase(Long id, String name, LocalDateTime purchaseDate, int totalAmount, String paymentMethod, User user) {
         this.id = id;
         this.name = name;
         this.purchaseDate = purchaseDate;
         this.totalAmount = totalAmount;
         this.paymentMethod = paymentMethod;
+        this.user = user;
     }
 
     public Purchase(){}
@@ -78,6 +78,27 @@ public class Purchase {
         this.paymentMethod = paymentMethod;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Purchase purchase = (Purchase) o;
+        return totalAmount == purchase.totalAmount && Objects.equals(id, purchase.id) && Objects.equals(name, purchase.name) && Objects.equals(purchaseDate, purchase.purchaseDate) && Objects.equals(paymentMethod, purchase.paymentMethod) && Objects.equals(user, purchase.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, purchaseDate, totalAmount, paymentMethod, user);
+    }
+
     @Override
     public String toString() {
         return "Purchase{" +
@@ -86,19 +107,7 @@ public class Purchase {
                 ", purchaseDate=" + purchaseDate +
                 ", totalAmount=" + totalAmount +
                 ", paymentMethod='" + paymentMethod + '\'' +
+                ", user=" + user +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Purchase purchase = (Purchase) o;
-        return totalAmount == purchase.totalAmount && Objects.equals(id, purchase.id) && Objects.equals(name, purchase.name) && Objects.equals(purchaseDate, purchase.purchaseDate) && Objects.equals(paymentMethod, purchase.paymentMethod);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, purchaseDate, totalAmount, paymentMethod);
     }
 }

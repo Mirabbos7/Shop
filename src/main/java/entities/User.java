@@ -27,15 +27,23 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Purchase> purchaseList;
 
-
-    public User(Long id, String name, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(Long id, String name, LocalDateTime createdAt, LocalDateTime updatedAt, List<Purchase> purchaseList) {
         this.id = id;
         this.name = name;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.purchaseList = purchaseList;
     }
 
     public User() {}
+
+    public List<Purchase> getPurchaseList() {
+        return purchaseList;
+    }
+
+    public void setPurchaseList(List<Purchase> purchaseList) {
+        this.purchaseList = purchaseList;
+    }
 
     public Long getId() {
         return id;
@@ -74,12 +82,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(createdAt, user.createdAt) && Objects.equals(updatedAt, user.updatedAt);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(createdAt, user.createdAt) && Objects.equals(updatedAt, user.updatedAt) && Objects.equals(purchaseList, user.purchaseList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, createdAt, updatedAt);
+        return Objects.hash(id, name, createdAt, updatedAt, purchaseList);
     }
 
     @Override
@@ -89,6 +97,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
+                ", purchaseList=" + purchaseList +
                 '}';
     }
 }
