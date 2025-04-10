@@ -1,6 +1,3 @@
-package implementation;
-
-import entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -11,39 +8,39 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserImplementation implements BaseService<User> {
+public class PurchaseImplementation implements BaseService<Purchase> {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public List<User> readAll() {
-        return entityManager.createQuery("select u from User u", User.class).getResultList();
+    public List<Purchase> readAll() {
+        return entityManager.createQuery("select p from Purchase p", Purchase.class).getResultList();
     }
 
     @Override
     @Transactional
-    public void create(User entity) {
+    public void create(Purchase entity) {
         entityManager.persist(entity);
     }
 
     @Override
     @Transactional
-    public void update(User entity) {
+    public void update(Purchase entity) {
         entityManager.merge(entity);
     }
 
     @Override
-    public Optional<User> readById(Long id) {
-        return Optional.ofNullable(entityManager.find(User.class, id));
+    public Optional<Purchase> readById(Long id) {
+        return Optional.ofNullable(entityManager.find(Purchase.class, id));
     }
 
     @Override
     @Transactional
     public boolean deleteById(Long id) {
-        Optional<User> optionalUser = readById(id);
-        if(optionalUser.isPresent()){
-            entityManager.remove(optionalUser.get());
+        Optional<Purchase> optionalPurchase = readById(id);
+        if (optionalPurchase.isPresent()) {
+            entityManager.remove(optionalPurchase.get());
             return true;
         }
         return false;

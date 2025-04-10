@@ -9,6 +9,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/module-repository" />
+            <option value="$PROJECT_DIR$/module-service" />
+            <option value="$PROJECT_DIR$/module-web" />
           </set>
         </option>
       </GradleProjectSettings>

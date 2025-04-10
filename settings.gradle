@@ -1,2 +1,5 @@
 rootProject.name = 'Shop'
+include 'module-repository'
+include 'module-service'
+include 'module-web'
 
