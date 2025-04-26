@@ -1,3 +1,5 @@
+package main.entity;
+
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -90,7 +92,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "main.User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", createdAt=" + createdAt +

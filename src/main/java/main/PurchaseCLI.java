@@ -1,9 +1,8 @@
 package main;
-
-import entities.Purchase;
-import entities.User;
-import implementation.PurchaseImplementation;
-import implementation.UserImplementation;
+import main.Implementation.PurchaseImplementation;
+import main.Implementation.UserImplementation;
+import main.entity.Purchase;
+import main.entity.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
@@ -65,7 +64,7 @@ public class PurchaseCLI implements CommandLineRunner {
         System.out.println("Enter user name: ");
         String userName = scanner.nextLine();
 
-        User user = new User();
+        var user = new User();
         user.setName(userName);
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());

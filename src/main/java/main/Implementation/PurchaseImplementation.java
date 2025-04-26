@@ -1,14 +1,17 @@
+package main.Implementation;
+
+import main.entity.Purchase;
+import main.interfaces.BaseRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import service.BaseService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PurchaseImplementation implements BaseService<Purchase> {
+public class PurchaseImplementation implements BaseRepository<Purchase> {
 
     @PersistenceContext
     private EntityManager entityManager;

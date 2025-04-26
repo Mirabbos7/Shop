@@ -1,3 +1,7 @@
+package main.Implementation;
+
+import main.entity.User;
+import main.interfaces.BaseRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -7,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserImplementation implements BaseService<User> {
+public class UserImplementation implements BaseRepository<User> {
 
     @PersistenceContext
     private EntityManager entityManager;

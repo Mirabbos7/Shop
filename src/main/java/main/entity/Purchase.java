@@ -1,4 +1,7 @@
+package main.entity;
+
 import jakarta.persistence.*;
+import main.User;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
@@ -23,9 +26,9 @@ public class Purchase {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User user;
+    main.entity.User user;
 
-    public Purchase(Long id, String name, LocalDateTime purchaseDate, int totalAmount, String paymentMethod, User user) {
+    public Purchase(Long id, String name, LocalDateTime purchaseDate, int totalAmount, String paymentMethod, main.entity.User user) {
         this.id = id;
         this.name = name;
         this.purchaseDate = purchaseDate;
@@ -76,7 +79,7 @@ public class Purchase {
         this.paymentMethod = paymentMethod;
     }
 
-    public User getUser() {
+    public main.entity.User getUser() {
         return user;
     }
 
@@ -99,7 +102,7 @@ public class Purchase {
 
     @Override
     public String toString() {
-        return "Purchase{" +
+        return "main.Purchase{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", purchaseDate=" + purchaseDate +
